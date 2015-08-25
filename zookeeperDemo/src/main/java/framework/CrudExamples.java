@@ -4,6 +4,7 @@ import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.api.BackgroundCallback;
 import org.apache.curator.framework.api.CuratorEvent;
 import org.apache.curator.framework.api.CuratorListener;
+import org.apache.zookeeper.AsyncCallback.ChildrenCallback;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.Watcher;
 import java.util.List;
@@ -117,4 +118,16 @@ public class CrudExamples
          */
         return client.getChildren().usingWatcher(watcher).forPath(path);
     }
+    
+    
+    public static String getData(CuratorFramework client, String path){
+    	byte[] dataByte = null;
+		try {
+			dataByte = client.getData().forPath(path);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new String(dataByte);
+    }
+    
 }
