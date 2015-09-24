@@ -3,6 +3,7 @@ package primitiveHandler;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.server.quorum.QuorumPeerMain;
 
 public class watcherSpecial implements Watcher{
 
@@ -20,7 +21,6 @@ public class watcherSpecial implements Watcher{
 	
 	@Override
 	public void process(WatchedEvent event) {
-
 		String path = event.getPath();
 		if (event.getType() == Event.EventType.None) {
 			// We are are being told that the state of the
